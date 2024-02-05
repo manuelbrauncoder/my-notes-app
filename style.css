@@ -44,6 +44,10 @@ nav li:first-child {
     margin-right: auto;
 }
 
+nav li:first-child a {
+    color: var(--blue);
+}
+
 .sidebar {
     position: fixed;
     top: 0;
@@ -83,7 +87,6 @@ h1, h2, h3 {
 .content {
     display: flex;
     flex-direction: column;
-    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
     min-height: calc(100vh - 100px);
@@ -100,7 +103,7 @@ h1, h2, h3 {
 button {
     width: fit-content;
     padding: 8px;
-    border-radius: 8px;
+    border-radius: 100vw;
     border: none;
     background-color: var(--blue)   
 }
@@ -108,6 +111,8 @@ button {
 button:hover {
     cursor: pointer;
     background-color: rgb(87, 95, 169);
+    scale: 105%;
+    transition-duration: 300ms;
 }
 
 .noteCard {
@@ -208,6 +213,7 @@ hr {
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+    transition: ease-in-out;
 }
 
 .addNoteHeadline {
