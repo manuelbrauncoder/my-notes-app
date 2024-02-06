@@ -198,6 +198,12 @@ hr {
     /* backdrop-filter: blur(15px); */
 }
 
+#archiveContainer {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
 .window {
     position: fixed;
     top: 10%;
