@@ -86,7 +86,11 @@ function getFormattedTime() {
 
 function getFormattedDate() {
     const date = new Date();
-    let formattedDate = date.toLocaleDateString("de-DE", { year: 'numeric', month: '2-digit', day: '2-digit' })
+    let formattedDate = date.toLocaleDateString("de-DE", {
+         year: 'numeric',
+         month: '2-digit',
+         day: '2-digit' 
+        });
     return formattedDate
 }
 
