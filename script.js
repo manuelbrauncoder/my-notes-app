@@ -64,13 +64,7 @@ function addNote() {
     let text = document.getElementById('noteText');
     let date = getFormattedDate();
     let time = getFormattedTime();
-    let newNote =
-    {
-        "title": title.value,
-        "text": text.value,
-        "date": date,
-        "time": time
-    }
+    let newNote = newJsonNote(title, text, date, time);
     notes.push(newNote);
     saveToLocalStorage();
     renderNotes();
@@ -80,28 +74,22 @@ function addNote() {
     text.value = '';
 }
 
-function getFormattedDate() {
-    let currentDate = new Date();
-    let day = currentDate.getDate();
-    let month = currentDate.getMonth() + 1;
-    let year = currentDate.getFullYear();
-    let formattedDay = day < 10 ? '0' + day : day;
-    let formattedMonth = month < 10 ? '0' + month : month;
-    let formattedDate = formattedDay + '.' + formattedMonth + '.' + year;
-    return formattedDate;
-}
-
 function getFormattedTime() {
-    let currentDate = new Date();
-    let hours = currentDate.getHours();
-    let minutes = currentDate.getMinutes();
-    let seconds = currentDate.getSeconds();
-    hours = (hours < 10) ? '0' + hours : hours;
-    minutes = (minutes < 10) ? '0' + minutes : minutes;
-    seconds = (seconds < 10) ? '0' + seconds : seconds;
-    let formattedTime = hours + ':' + minutes + ':' + seconds;
+    const date = new Date();
+    let formattedTime = date.toLocaleTimeString("de-DE", {
+        hour12: false,
+        hour: 'numeric',
+        minute: 'numeric'
+    });
     return formattedTime;
 }
+
+function getFormattedDate() {
+    const date = new Date();
+    let formattedDate = date.toLocaleDateString("de-DE", { year: 'numeric', month: '2-digit', day: '2-digit' })
+    return formattedDate
+}
+
 
 function moveToContainer(index, toContainer, fromContainer) {
     toContainer.push(fromContainer[index]);
@@ -128,22 +116,25 @@ function editNote(index) {
 }
 
 function saveEditNote() {
-    let newTitle = document.getElementById('editTitle');
-    let newText = document.getElementById('editText');
+    let title = document.getElementById('editTitle');
+    let text = document.getElementById('editText');
     let date = getFormattedDate();
     let time = getFormattedTime();
-    let newNote =
-    {
-        "title": newTitle.value,
-        "text": newText.value,
-        "date": date,
-        "time": time
-    }
+    let newNote = newJsonNote(title, text, date, time);
     notes.splice(indexToEdit, 1, newNote);
     saveToLocalStorage();
     init();
     hideContainer('edit');
     hideContainer('containerBg');
+}
+
+function newJsonNote(title, text, date, time) {
+    return {
+        "title": title.value,
+        "text": text.value,
+        "date": date,
+        "time": time
+    }
 }
 
 function deleteAllTrashNotes() {
