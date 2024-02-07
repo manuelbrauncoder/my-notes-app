@@ -143,6 +143,10 @@ button:hover {
     margin-top: auto;
 }
 
+.addTime span:first-child {
+    margin-bottom: 8px;
+}
+
 hr {
     border-top: 0.5px solid lightgray;
     width: 80%;

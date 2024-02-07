@@ -102,13 +102,6 @@ function moveToArray(index, toArray, fromArray) {
     saveToLocalStorage();
 }
 
-function restoreFromContainer(index, toContainer, fromContainer) {
-    toContainer.push(fromContainer[index]);
-    fromContainer.splice(index, 1);
-    init();
-    saveToLocalStorage();
-}
-
 function editNote(index) {
     let noteTitleToEdit = notes[index].title;
     let noteTextToEdit = notes[index].text;
