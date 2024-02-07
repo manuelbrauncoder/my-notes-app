@@ -95,9 +95,9 @@ function getFormattedDate() {
 }
 
 
-function moveToContainer(index, toContainer, fromContainer) {
-    toContainer.push(fromContainer[index]);
-    fromContainer.splice(index, 1);
+function moveToArray(index, toArray, fromArray) {
+    toArray.push(fromArray[index]);
+    fromArray.splice(index, 1);
     init();
     saveToLocalStorage();
 }
