@@ -148,7 +148,6 @@ function deleteAllTrashNotes() {
         init();
     }
     saveToLocalStorage();
-
 }
 
 function saveToLocalStorage() {
@@ -169,14 +168,4 @@ function loadFromLocalStorage() {
         trash = JSON.parse(storedTrash);
         archive = JSON.parse(storedArchive);
     }
-}
-
-function showSidebar() {
-    const sidebar = document.querySelector('.sidebar');
-    sidebar.style.display = 'flex';
-}
-
-function hideSidebar() {
-    const sidebar = document.querySelector('.sidebar');
-    sidebar.style.display = 'none';
 }
